@@ -1,5 +1,6 @@
 import Link from "next/link";
 import css from "./Header.module.css"
+import Pagination from "../Pagination/Pagination";
 
 export default function Header(){
     return(
