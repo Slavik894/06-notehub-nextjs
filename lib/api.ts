@@ -25,6 +25,15 @@ export const fetchNotes = async (page: number, searchText: string) => {
     return res.data;
 };
 
+export const getSingleNote = async (id: string) => {
+    const res = await axios.get(`/notes/${id}`, {
+        headers: {
+            Authorization: `Bearer ${myToken}`
+        }
+    });
+    return res.data;
+}
+
 interface NewNote{
     title: string;
     content: string;
