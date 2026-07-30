@@ -1,6 +1,6 @@
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getSingleNote } from "@/lib/api";
-import NoteDetailsClient from "@/app/notes/[id]/NoteDetailsClient";
+import NoteDetailsClient from "@/app/notes/[id]/NoteDetails.client";
 
 type Props ={
     params: Promise<{id: string}>;
