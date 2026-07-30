@@ -9,6 +9,7 @@ import Pagination from '@/components/Pagination/Pagination'
 import NoteList from '@/components/NoteList/NoteList'
 import Modal from '@/components/Modal/Modal'
 import NoteForm from '@/components/NoteForm/NoteForm'
+import { useDebounce } from 'use-debounce'
 
 
 export default function NotesClient() {
@@ -16,10 +17,10 @@ export default function NotesClient() {
 const [currentPage, setCurrentPage] = useState(1);
 const [searchText, setSearchText] = useState("")
 
-const handleSearch = (value: string) =>{
+const [handleSearch] = useDebounce((value: string) =>{
   setSearchText(value);
   setCurrentPage(1);
-}
+}, 300);
 
 const {data, isLoading} = useQuery<NotesHttpResponse>({
   queryKey: ["notes", currentPage, searchText],
@@ -48,7 +49,7 @@ const closeModal = () => setIsModalOpen(false);
       </header>
 
       {data && !isLoading && <NoteList notes={notes}/>}
-      {isModalOpen &&(
+      {data && isModalOpen &&(
         <Modal onClose={closeModal}>
           <NoteForm onClose={closeModal} />
         </Modal>

@@ -4,16 +4,26 @@ import { getSingleNote } from "@/lib/api";
 import css from "./NoteDetails.client.module.css"
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "next/navigation";
+import Loading from "@/app/loading";
+import { error } from "console";
 
 
 const NoteDetailsClient = () =>{
 	const {id} = useParams<{id: string}>();
 
-	const {data: note} = useQuery({
+	const {data: note, isLoading, isError} = useQuery({
 		queryKey: ["note", id],
 		queryFn: () => getSingleNote(id),
 		refetchOnMount: false,
 	})
+
+	if (isLoading){
+			return <Loading/>
+		}
+
+	if(isError || !note){
+		return "An error has occured. Please try again"
+	}
 
     return(
         <main className={css.main}>	

@@ -2,7 +2,6 @@ import css from "./page.module.css"
 
 export default function Home() {
   return (
-    <div>
       <main className={css.main}>
   <div className={css.container}>
     <h1 className={css.title}>Welcome to NoteHub</h1>
@@ -19,7 +18,5 @@ export default function Home() {
     </p>
   </div>
 </main>
-
-    </div>
   );
 }
