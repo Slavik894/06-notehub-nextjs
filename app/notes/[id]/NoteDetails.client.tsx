@@ -5,7 +5,7 @@ import css from "./NoteDetails.client.module.css"
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "next/navigation";
 import Loading from "@/app/loading";
-import { error } from "console";
+
 
 
 const NoteDetailsClient = () =>{
